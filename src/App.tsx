@@ -1,11 +1,17 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/mode-toggle";
+import Layout from "@/components/layout";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import GridBackground from "./components/theme/grid-background";
+import Container from "./components/layout/container";
 
 function App() {
   return (
     <>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <ModeToggle />
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+        <GridBackground>
+          <Container classes="px-40">
+            <Layout />
+          </Container>
+        </GridBackground>
       </ThemeProvider>
     </>
   );
