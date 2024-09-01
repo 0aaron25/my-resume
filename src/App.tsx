@@ -1,17 +1,16 @@
 import Layout from "@/components/layout";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import GridBackground from "./components/theme/grid-background";
-import Container from "./components/layout/container";
+import Content from "@/components/layout/content";
+import BackToTop from "@/components/back-to-top";
 
 function App() {
   return (
     <>
       <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-        <GridBackground>
-          <Container classes="px-40">
-            <Layout />
-          </Container>
-        </GridBackground>
+        <Layout>
+          <Content />
+          <BackToTop />
+        </Layout>
       </ThemeProvider>
     </>
   );

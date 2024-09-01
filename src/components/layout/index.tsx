@@ -1,5 +1,16 @@
 import Header from "./header";
 
-export default function Layout() {
-  return <Header />;
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <>
+      <main className="grid-background relative">
+        <Header />
+        {children}
+      </main>
+    </>
+  );
 }
