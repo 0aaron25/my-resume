@@ -18,6 +18,7 @@ export default function Content() {
           autoPlay
           loop
           playsInline
+          preload="auto"
           src={theme === "dark" ? EmojiDark : Emoji}
         >
           Your browser does not support the video tag.

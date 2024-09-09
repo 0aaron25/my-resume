@@ -1,4 +1,3 @@
-"use client";
 import { useWindowScroll } from "react-use";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
