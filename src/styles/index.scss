@@ -170,9 +170,7 @@
 }
 
 @media (min-width: 768px) {
-  h1 {
-    font-size: 2.7rem;
-  }
+
 
   .nav-links > *:not(:last-child) {
     position: relative;
@@ -193,3 +191,8 @@
     }
   }
 }
+@font-face {
+  font-family: "GoldenSignature";
+  src: url("@/assets/GoldenSignature.otf");
+}
+

@@ -52,6 +52,13 @@ export function ThemeProvider({
 
   function toggleDark(event: React.MouseEvent) {
     const isDark = theme === "dark";
+    //兼容safari没有这个api startViewTransition
+    // @ts-expect-error: Transition API
+    if (!document.startViewTransition) {
+      setTheme(isDark ? "light" : "dark");
+      return;
+    }
+
     const x = event.clientX;
     const y = event.clientY;
     const endRadius = Math.hypot(
@@ -62,7 +69,6 @@ export function ThemeProvider({
     const transition = document.startViewTransition(async () => {
       setTheme(isDark ? "light" : "dark");
     });
-    console.log(transition, "transition");
     transition.ready.then(() => {
       const clipPath = [
         `circle(0px at ${x}px ${y}px)`,
