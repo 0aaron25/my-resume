@@ -52,9 +52,13 @@ export function ThemeProvider({
 
   function toggleDark(event: React.MouseEvent) {
     const isDark = theme === "dark";
-    //兼容safari没有这个api startViewTransition
-    // @ts-expect-error: Transition API
-    if (!document.startViewTransition) {
+
+    const isAppearanceTransition =
+      // @ts-expect-error: experimental API
+      document.startViewTransition &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!isAppearanceTransition) {
       setTheme(isDark ? "light" : "dark");
       return;
     }
@@ -74,7 +78,6 @@ export function ThemeProvider({
         `circle(0px at ${x}px ${y}px)`,
         `circle(${endRadius}px at ${x}px ${y}px)`,
       ];
-      console.log("clipPath", clipPath);
       document.documentElement.animate(
         {
           clipPath: isDark ? [...clipPath].reverse() : clipPath,
