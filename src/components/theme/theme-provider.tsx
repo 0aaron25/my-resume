@@ -52,6 +52,7 @@ export function ThemeProvider({
 
   function toggleDark(event: React.MouseEvent) {
     const isDark = theme === "dark";
+    const toggleTheme = isDark ? "light" : "dark";
 
     const isAppearanceTransition =
       // @ts-expect-error: experimental API
@@ -59,7 +60,8 @@ export function ThemeProvider({
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (!isAppearanceTransition) {
-      setTheme(isDark ? "light" : "dark");
+      localStorage.setItem(storageKey, toggleTheme);
+      setTheme(toggleTheme);
       return;
     }
 
@@ -71,7 +73,8 @@ export function ThemeProvider({
     );
     // @ts-expect-error: Transition API
     const transition = document.startViewTransition(async () => {
-      setTheme(isDark ? "light" : "dark");
+      localStorage.setItem(storageKey, toggleTheme);
+      setTheme(toggleTheme);
     });
     transition.ready.then(() => {
       const clipPath = [

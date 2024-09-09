@@ -15,9 +15,11 @@ const links = [
 
 export default function Header() {
   return (
-    <nav className="flex flex-col md:flex-row gap-5 py-8 md:px-28 justify-center md:justify-between">
-      <Logo />
-      <div className="flex gap-8 items-center justify-center nav-links">
+    <nav className="grid grid-cols-1 gap-5 py-8 justify-center md:grid-cols-2 md:px-28">
+      <div className="justify-self-center md:justify-self-start">
+        <Logo />
+      </div>
+      <div className="flex gap-8 items-center nav-links md:justify-end justify-center">
         {links.map((link, index) => {
           return (
             <span
